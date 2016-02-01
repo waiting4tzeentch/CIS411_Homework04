@@ -12,23 +12,32 @@
 
 		<!--  Product Container  -->
 			<div class="list-group-item"
-				ng-hide="store.product.soldOut"
 				ng-repeat="product in store.products">
 
 				<h3>
-					{{store.product.name}}
+					{{product.name}}
 					<em class="pull-right">{{product.price | currency }}</em>
 				</h3>
-				<button ng-show="store.product.canPurchase">Add to Cart</button>
 
 				<!-- Image Gallery  -->
 				<div class="gallery">
-					<img ng-src="{{product.images[0]}}"/>
-				</div>
+        			<div class="img-wrap">
+          				<img ng-src="{{product.images[0]}}" />
+        			</div>
 
-			</div> <!-- END: Product Container - List group item -->
+        			<ul class="img-thumbnails clearfix">
+         				<li class="small-image pull-left thumbnail"
+         				ng-repeat="image in product.images">
+            				<img ng-src="{{image}}" />
+          				</li>
+        			</ul>
+      			</div> <!-- END : Image Gallery -->
 
-		</div> <!-- END: Product Container - List group -->
+      			<button ng-show="product.canPurchase">Add to Cart</button>
+
+			</div> <!-- END : Product Container - List group item -->
+
+		</div> <!-- END : Product Container - List group -->
 
 	</body>
 
