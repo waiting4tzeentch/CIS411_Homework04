@@ -7,17 +7,29 @@
 	</head>
 
 	<body ng-controller="StoreController as store">
-		<div class="product row"
-			ng-hide="store.product.soldOut"
-			ng-repeat="product in store.products">
+		<!--  Products Container  -->
+		<div class="list-group">
 
-			<h3>
-				{{store.product.name}}
-				<em class="pull-right">{{product.price | currency }}</em>
-			</h3>
-			<button ng-show="store.product.canPurchase">Add to Cart</button>
+		<!--  Product Container  -->
+			<div class="list-group-item"
+				ng-hide="store.product.soldOut"
+				ng-repeat="product in store.products">
 
-		</div>
+				<h3>
+					{{store.product.name}}
+					<em class="pull-right">{{product.price | currency }}</em>
+				</h3>
+				<button ng-show="store.product.canPurchase">Add to Cart</button>
+
+				<!-- Image Gallery  -->
+				<div class="gallery">
+					<img ng-src="{{product.images[0]}}"/>
+				</div>
+
+			</div> <!-- END: Product Container - List group item -->
+
+		</div> <!-- END: Product Container - List group -->
+
 	</body>
 
 </html>
