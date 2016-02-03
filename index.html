@@ -20,26 +20,12 @@
 				</h3>
 
 				<!-- Image Gallery  -->
-				<section class="gallery" ng-show="product.images.length>0"
-					 ng-controller="GalleryController as gallery">
-        			<div class="img-wrap">
-          				<img ng-src="{{product.images[gallery.current]}}" />
-        			</div>
-
-        			<ul class="img-thumbnails clearfix">
-         				<li class="small-image pull-left thumbnail"
-         				ng-repeat="image in product.images">
-            				<img ng-src="{{image}}" />
-          				</li>
-        			</ul>
-
-      			</section> <!-- END : Image Gallery -->
+				<product-gallery></product-gallery>
+				<!-- END : Image Gallery -->
 
       			<!-- Tabs -->
 
-      			<product-tabs>
-
-      			</product-tabs>
+      			<product-tabs></product-tabs>
 
 			</div> <!-- END : Product Container - List group item -->
 

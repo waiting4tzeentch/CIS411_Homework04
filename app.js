@@ -5,23 +5,18 @@
     this.products = gems;
   });
 
-  app.controller('TabController', function(){
-  	this.tab = 1;
-
-  	this.setTab = function(selectedTab){
-  		this.tab = selectedTab;
+  app.directive('productGallery', function() {
+  	return {
+  		restrict: 'E',
+  		templateUrl: 'product-gallery.html',
+  		controller: function() {
+  			this.current = 0;
+  			this.setCurrent = function(imageNumber) {
+  				this.current = imageNumber || 0;
+  			};
+  		},
+  		controllerAs: "gallery"
   	};
-  	this.isSet = function(setTab){
-  		return this.tab === setTab;
-  	};
-  });
-
-  app.controller('GalleryController', function(){
-  	this.current = 0;
-  	this.setCurrent = function(gallery){
-  		this.current = gallery || 0;
-  	};
-
   });
 
   app.controller('ReviewController', function(){
