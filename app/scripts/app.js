@@ -1,27 +1,16 @@
 (function() {
-  var app = angular.module('gemStore', []);
+  var app = angular.module('gemStore', ['store-directives']);
 
-  app.controller('StoreController', function(){
-    this.products = gems;
-  });
+  app.controller('StoreController', ['$http',function($http){
+    var store = this;
+    store.products = [];
+    $http.get('/json/store-products.json').success(function(data){
+      store.products=data;
+    });
+  }]);
+
   
-    
-  
-  app.directive("productGallery", function(){
-   return{
-     restrict:'E',
-     templateUrl:'views/product-gallery.html',
-     controller:function(){
-     this.current = 0;
-    this.setCurrent = function(imageNumber){
-      this.current = imageNumber || 0;
-    };
-     },
-     controllerAs:'gallery'
-   };
- }); 
-  
-    app.controller('ReviewController', function(){
+   app.controller('ReviewController', function(){
     this.review = {};
     
     this.review.createdOn=Date.now();
@@ -31,53 +20,7 @@
       this.review={};
     };
   });
-  
-  app.directive('productDescription', function(){
-    return{
-      restrict:'E',
-      templateUrl:'views/product-description.html'
-    };
-  });
-
-  app.directive("productSpecs", function() {
-    return {
-      restrict:'A',
-      templateUrl:'views/product-specs.html'
-    };
-  });
-  
-    app.directive("productTabs", function(){
-    return {
-      restrict:'E',
-      templateUrl:'views/product-tabs.html',
-      controller:function(){
-        this.tab = 1;
-
-    this.isSet = function(checkTab) {
-      return this.tab === checkTab;
-    };
-
-    this.setTab = function(setTab) {
-      this.tab = setTab;
-    };
-      },
-      controllerAs:'tab',
-    };
-  });
-  
-
-  app.directive("productReviews", function() {
-    return {
-      restrict: 'E',
-      templateUrl: "views/product-reviews.html"
-    };
-  });
-
-
-
-
-
-
+    
   var gems = [{
       name: 'Azurite',
       description: "Some gems have hidden qualities beyond their luster, beyond their shine... Azurite is one of those gems.",
