@@ -8,6 +8,7 @@
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
 	<link rel="stylesheet" href="styles/main.css">
+	<link rel="stylesheet" href="styles/application.css">
 	
 	<!-- Angular and bootstrap scripts -->
 	<script src="bower_components/jquery/dist/jquery.js"></script>
@@ -37,39 +38,8 @@
 			</h3>
 			
 			<!-- Image Gallery  -->
-			<div ng-controller="GalleryController as gallery" 
-				class='gallery' 
-				ng-show="product.images.length">
-		        <img ng-src="{{product.images[gallery.current]}}" />
-		        <ul class="list-inline thumbs">
-			        <li class="thumbnail" ng-repeat="image in product.images">
-			            <img ng-src="{{image}}" />
-			        </li>
-		        </ul>
-		    </div>
-			
-			<section class="tab" ng-controller="TabController as tab">
-		        <ul class="nav nav-pills">
-		          <li ng-class="{ active:tab.isSet(1) }">
-		            <a href ng-click="tab.setTab(1)">Description</a></li>
-		          <li ng-class="{ active:tab.isSet(2) }">
-		            <a href ng-click="tab.setTab(2)">Specs</a></li>
-		          <li ng-class="{ active:tab.isSet(3) }">
-		            <a href ng-click="tab.setTab(3)">Reviews</a></li>
-		        </ul>
-		        <div ng-show="tab.isSet(1)">
-		          <h4>Description</h4>
-		          <blockquote>{{product.description}}</blockquote>
-		        </div>
-		        <div ng-show="tab.isSet(2)">
-		          <h4>Specs</h4>
-		          <blockquote>Shine: {{product.shine}}</blockquote>
-		        </div>
-		        <div ng-show="tab.isSet(3)">
-		          <h4>Reviews</h4>
-		          <blockquote></blockquote>
-		        </div>
-		    </section>
+			<product-gallery></product-gallery>
+		    <product-tabs></product-tabs>
 		</div>
 	</div>
 		

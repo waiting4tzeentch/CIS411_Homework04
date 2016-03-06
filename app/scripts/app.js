@@ -5,23 +5,78 @@
     this.products = gems;
   });
   
-    app.controller('GalleryController', function(){
-    this.current=0;
-    this.setCurrent=function(newValue){
-      this.current = newValue||0;
+    
+  
+  app.directive("productGallery", function(){
+   return{
+     restrict:'E',
+     templateUrl:'views/product-gallery.html',
+     controller:function(){
+     this.current = 0;
+    this.setCurrent = function(imageNumber){
+      this.current = imageNumber || 0;
+    };
+     },
+     controllerAs:'gallery'
+   };
+ }); 
+  
+    app.controller('ReviewController', function(){
+    this.review = {};
+    
+    this.review.createdOn=Date.now();
+    
+    this.addReview=function(product){
+      product.reviews.push(this.review);
+      this.review={};
     };
   });
   
-  app.controller('TabController', function(){
-    this.tab=1;
-    this.setTab = function(setTab){
-        this.tab=setTab;
-    };
-    
-    this.isSet = function(tabName){
-      return this.tab === tabName;
+  app.directive('productDescription', function(){
+    return{
+      restrict:'E',
+      templateUrl:'views/product-description.html'
     };
   });
+
+  app.directive("productSpecs", function() {
+    return {
+      restrict:'A',
+      templateUrl:'views/product-specs.html'
+    };
+  });
+  
+    app.directive("productTabs", function(){
+    return {
+      restrict:'E',
+      templateUrl:'views/product-tabs.html',
+      controller:function(){
+        this.tab = 1;
+
+    this.isSet = function(checkTab) {
+      return this.tab === checkTab;
+    };
+
+    this.setTab = function(setTab) {
+      this.tab = setTab;
+    };
+      },
+      controllerAs:'tab',
+    };
+  });
+  
+
+  app.directive("productReviews", function() {
+    return {
+      restrict: 'E',
+      templateUrl: "views/product-reviews.html"
+    };
+  });
+
+
+
+
+
 
   var gems = [{
       name: 'Azurite',
