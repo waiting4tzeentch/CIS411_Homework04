@@ -1,6 +1,30 @@
 .ng-invalid.ng-dirty {
-    border-color:red;
-}  
-.ng-valid.ng-dirty{
-  border-color:green;
+  border-color: red;
+}
+
+.ng-valid.ng-dirty {
+  border-color: green;
+}
+li{
+  list-style: none;
+  display: table; 
+}
+
+li.small-image{
+  width:50px;
+}
+
+div.list-group{
+  margin: auto;
+  width: 650px;
+}
+.img-wrap{
+  text-align: center;
+  width: 100%;
+}
+.img-thumbnails::before{
+	text-align: center;
+}
+list-group-item div{
+	text-align: center;
 }
